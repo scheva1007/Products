@@ -19,10 +19,6 @@ class Product
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getDb() {
-        return $this->db;
-    }
-
     public function create($data) {
         $stmt = $this->db->prepare("INSERT INTO products (name, price, group_id) VALUES (?, ?, ?)");
         return $stmt->execute([$data['name'], $data['price'], $data['group_id']]);

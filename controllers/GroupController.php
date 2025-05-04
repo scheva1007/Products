@@ -16,7 +16,7 @@ class GroupController
     }
 
     public function create() {
-        $groups = $this->group->all(); // для вибору parent_id
+        $groups = $this->group->all();
         include __DIR__ . '/../views/groups/create.php';
     }
 
@@ -27,7 +27,7 @@ class GroupController
 
     public function edit($id) {
         $group = $this->group->find($id);
-        $groups = $this->group->all(); // для вибору parent_id
+        $groups = $this->group->all();
         include __DIR__ . '/../views/groups/edit.php';
     }
 

@@ -6,9 +6,11 @@ require_once  '../models/Group.php';
 class ProductController
 {
     private $product;
+    protected $groupModel;
 
     public function __construct($db) {
         $this->product = new Product($db);
+        $this->groupModel = new Group($db);
     }
 
     public function index() {
@@ -17,8 +19,7 @@ class ProductController
     }
 
     public function create() {
-        $groupModel = new Group($this->product->getDb());
-        $groups = $groupModel->all();
+        $groups = $this->groupModel->all();
         include __DIR__ . '/../views/products/create.php';
     }
 
@@ -29,8 +30,7 @@ class ProductController
 
     public function edit($id) {
         $product = $this->product->find($id);
-        $groupModel = new Group($this->product->getDb());
-        $groups = $groupModel->all();
+        $groups = $this->groupModel->all();
 
         include __DIR__ . '/../views/products/edit.php';
     }
