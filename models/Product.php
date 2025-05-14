@@ -19,6 +19,19 @@ class Product
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getColumns()
+    {
+        $query = $this->db->query("SHOW COLUMNS FROM products");
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function search($query)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM products WHERE name LIKE ?");
+        $stmt->execute(['%' . $query . '%']);
+        return  $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function create($data) {
         $stmt = $this->db->prepare("INSERT INTO products (name, price, group_id) VALUES (?, ?, ?)");
         return $stmt->execute([$data['name'], $data['price'], $data['group_id']]);

@@ -9,7 +9,7 @@
 <div class="container bg-white p-4 rounded shadow-sm">
     <h3 class="mb-4"><?= isset($product) ? 'Редагувати товар' : 'Додати товар' ?></h3>
 
-    <form action="/?action=<?= isset($product) ? 'update&id=' . $product['id'] : 'store' ?>" method="post">
+    <form action="/?controller=product&action=<?= isset($product) ? 'update' : 'store' ?>&id=<?= $product['id'] ?? '' ?>" method="post">
         <div class="mb-3 w-50">
             <label for="name" class="form-label">Назва товару</label>
             <input type="text" name="name" id="name" class="form-control" required

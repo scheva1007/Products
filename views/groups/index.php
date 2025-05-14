@@ -8,7 +8,7 @@
 <body class="container mt-5">
 <h2 class="mb-4">Групи товарів</h2>
 
-<a href="/?group_action=create" class="btn btn-primary mb-3">Додати групу</a>
+<a href="/?controller=group&action=create" class="btn btn-primary mb-3">Додати групу</a>
 <a href="/" class="btn btn-secondary mb-3 ml-2">← Назад до товарів</a>
 
 <table class="table table-bordered">
@@ -27,8 +27,8 @@
             <td><?= htmlspecialchars($group['name']) ?></td>
             <td><?= $group['parent_id'] ?? '—' ?></td>
             <td>
-                <a href="/?group_action=edit&id=<?= $group['id'] ?>" class="btn btn-sm btn-warning">Редагувати</a>
-                <a href="/?group_action=delete&id=<?= $group['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Ви впевнені?')">Видалити</a>
+                <a href="/?controller=group&action=edit&id=<?= $group['id'] ?>" class="btn btn-sm btn-warning">Редагувати</a>
+                <a href="/?controller=group&action=delete&id=<?= $group['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Ви впевнені?')">Видалити</a>
             </td>
         </tr>
     <?php endforeach; ?>

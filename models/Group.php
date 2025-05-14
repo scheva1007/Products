@@ -9,8 +9,7 @@ class Group
     }
 
     public function all() {
-        $stmt = $this->db->query("SELECT * FROM groups");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $this->db->query("SELECT * FROM groups")->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function find($id) {

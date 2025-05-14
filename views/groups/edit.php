@@ -8,7 +8,7 @@
 <body class="container mt-5">
 <h2 class="mb-4">Редагувати групу</h2>
 
-<form action="/?group_action=update&id=<?= $group['id'] ?>" method="post">
+<form action="/?controller=group&action=update&id=<?= $group['id'] ?>" method="post">
     <div class="form-group w-50">
         <label for="name">Назва групи</label>
         <input type="text" name="name" id="name" class="form-control" value="<?= htmlspecialchars($group['name']) ?>" required>
@@ -27,7 +27,7 @@
     </div>
 
     <button type="submit" class="btn btn-success">Оновити</button>
-    <a href="/?group_action=index" class="btn btn-secondary ml-5">Назад</a>
+    <a href="/?controller=group&action=index" class="btn btn-secondary ml-5">Назад</a>
 </form>
 </body>
 </html>

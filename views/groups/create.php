@@ -8,7 +8,7 @@
 <body class="container mt-5">
 <h2 class="mb-4">Додати нову групу</h2>
 
-<form action="/?group_action=store" method="post">
+<form action="/?controller=group&action=store" method="post">
     <div class="form-group w-50">
         <label for="name">Назва групи</label>
         <input type="text" name="name" id="name" class="form-control" required>
@@ -25,7 +25,7 @@
     </div>
 
     <button type="submit" class="btn btn-success mr-5">Зберегти</button>
-    <a href="/?group_action=index" class="btn btn-secondary">Назад</a>
+    <a href="/?controller=group&action=index" class="btn btn-secondary">Назад</a>
 </form>
 </body>
 </html>

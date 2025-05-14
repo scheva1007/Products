@@ -11,8 +11,13 @@
         <h2 class="mb-0">Список товарів</h2>
         <a href="/?action=create" class="btn btn-success">Додати товар</a>
     </div>
-
-    <a href="/?group_action=index" class="btn btn-outline-primary mb-3">Перейти до груп товарів</a>
+    <form method="get" class="mb-3">
+        <input type="hidden" name="action" value="index">
+        <input type="text" name="query" class="form-control mb-2" placeholder="Пошук товару"
+        value="<?= htmlspecialchars($_GET['query'] ?? '') ?>">
+        <button type="submit" class="btn btn-primary">Пошук</button>
+    </form>
+    <a href="/?controller=group&action=index" class="btn btn-outline-primary mb-3">Перейти до груп товарів</a>
 
     <table class="table table-bordered table-hover">
         <thead class="table-light">
@@ -30,8 +35,8 @@
                 <td><?= htmlspecialchars($product['name']) ?></td>
                 <td><?= $product['price'] ?></td>
                 <td>
-                    <a href="/?action=edit&id=<?= $product['id'] ?>" class="btn btn-sm btn-warning">Редагувати</a>
-                    <a href="/?action=delete&id=<?= $product['id'] ?>" class="btn btn-sm btn-danger"
+                    <a href="/?controller=product&action=edit&id=<?= $product['id'] ?>" class="btn btn-sm btn-warning">Редагувати</a>
+                    <a href="/?controller=product&action=delete&id=<?= $product['id'] ?>" class="btn btn-sm btn-danger"
                        onclick="return confirm('Ви впевнені, що хочете видалити цей продукт?')">Видалити</a>
                 </td>
             </tr>

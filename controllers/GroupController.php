@@ -22,7 +22,7 @@ class GroupController
 
     public function store() {
         $this->group->create($_POST);
-        header('Location: /?group_action=index');
+        header('Location: /?controller=group&action=index');
     }
 
     public function edit($id) {
@@ -32,8 +32,11 @@ class GroupController
     }
 
     public function update($id) {
+        if ($_POST['parent_id'] === '') {
+            $_POST['parent_id'] = null;
+        }
         $this->group->update($id, $_POST);
-        header('Location: /?group_action=index');
+        header('Location: /?controller=group&action=index');
     }
 
     public function delete($id) {

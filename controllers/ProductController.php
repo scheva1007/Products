@@ -14,9 +14,23 @@ class ProductController
     }
 
     public function index() {
-        $products = $this->product->all();
+        $query = $_GET['query'] ?? null;
+
+        if ($query) {
+            $products = $this->product->search($query);
+        } else {
+            $products = $this->product->all();
+        }
+
         include __DIR__ . '/../views/products/index.php';
     }
+
+    public function columns()
+    {
+        $columns = $this->product->getColumns();
+        include __DIR__ . '/../views/products/columns.php';
+    }
+
 
     public function create() {
         $groups = $this->groupModel->all();
@@ -25,7 +39,7 @@ class ProductController
 
     public function store() {
         $this->product->create($_POST);
-        header('Location: /?action=index');
+        header('Location: /?controller=product&action=index');
     }
 
     public function edit($id) {
@@ -37,7 +51,7 @@ class ProductController
 
     public function update($id) {
         $this->product->update($id, $_POST);
-        header('Location: /?action=index');
+        header('Location: /?controller=product&action=index');
     }
 
     public function delete($id) {
